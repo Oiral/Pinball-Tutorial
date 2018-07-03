@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class ChangeScoreScript : MonoBehaviour {
+public class ChangeScoreScriptTutorial : MonoBehaviour {
 
     public UnityEvent changeScore;
 
