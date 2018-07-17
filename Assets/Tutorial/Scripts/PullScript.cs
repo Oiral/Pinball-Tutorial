@@ -5,26 +5,24 @@ using UnityEngine;
 public class PullScript : MonoBehaviour {
 
     float activeStrength = 500f;
-    float unactiveStrength = 1f;
+    float unactiveStrength = 0f;
 
     public string inputButtonName = "Pull";
 
-    SpringJoint spring;
-
-    private void Awake()
-    {
-        spring = GetComponent<SpringJoint>();
-    }
+    public SpringJoint restingSpring;
+    public SpringJoint hitSpring;
 
     private void Update()
     {
-        if (Input.GetButtonDown(inputButtonName))
+        if (Input.GetButton(inputButtonName))
         {
-            spring.spring = activeStrength;
+            restingSpring.spring = activeStrength/5;
+            hitSpring.spring = unactiveStrength;
         }
         else
         {
-            spring.spring = unactiveStrength;
+            restingSpring.spring = unactiveStrength;
+            hitSpring.spring = activeStrength;
         }
     }
 }
