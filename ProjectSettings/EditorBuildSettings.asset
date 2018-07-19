@@ -4,4 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Pinball Arena 1.unity
+    guid: fe8d617d89ec3a74eb6eded327078247
+  m_configObjects: {}
