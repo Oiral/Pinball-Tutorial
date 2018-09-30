@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PullScript : MonoBehaviour {
+public class PullScriptTutorial : MonoBehaviour {
 
     float activeStrength = 500f;
     float unactiveStrength = 1f;

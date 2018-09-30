@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PaddleScript : MonoBehaviour {
+public class PaddleScriptTutorial : MonoBehaviour {
 
     //Parameters
     float restPosition = 0f;

@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class GameManagerScript : MonoBehaviour {
+public class GameManagerScriptTutorial : MonoBehaviour {
 
     public int Score;
 
