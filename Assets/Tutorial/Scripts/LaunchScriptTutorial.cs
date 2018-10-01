@@ -8,7 +8,11 @@ public class LaunchScriptTutorial : MonoBehaviour {
 
     public KeyCode launchButton = KeyCode.Space;
 
-    public Vector3 force;
+    public Vector3 force = new Vector3(0,0,1);
+
+    float currentPower;
+    public float targetPower;
+    public float pullSpeed;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -27,12 +31,17 @@ public class LaunchScriptTutorial : MonoBehaviour {
 
     private void Update()
     {
-        if (Input.GetKeyDown(launchButton))
+        if (Input.GetKey(launchButton))
+        {
+            currentPower = Mathf.Lerp(currentPower, targetPower, pullSpeed * Time.deltaTime);
+        }
+        else if (Input.GetKeyUp(launchButton))
         {
             foreach (GameObject ball in objectsInRange)
             {
-                ball.GetComponent<Rigidbody>().AddRelativeForce(force);
+                ball.GetComponent<Rigidbody>().AddForce(force * currentPower,ForceMode.VelocityChange);
             }
+            currentPower = 0;
         }
     }
 
