@@ -10,6 +10,8 @@ public class BouncerScript : MonoBehaviour {
 
     public int bouncerWorth = 1;
 
+    public GameObject sparksPrefab;
+
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.green;
@@ -18,6 +20,10 @@ public class BouncerScript : MonoBehaviour {
 
     private void OnCollisionEnter(Collision collision)
     {
+        if (sparksPrefab != null)
+        {
+            Instantiate(sparksPrefab, transform).transform.position = transform.position;
+        }
         collision.rigidbody.AddExplosionForce(force, transform.position, 2);
         GameManager.instance.AddScore(bouncerWorth);
     }
