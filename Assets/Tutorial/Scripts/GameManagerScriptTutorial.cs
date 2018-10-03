@@ -6,17 +6,37 @@ using UnityEngine.SceneManagement;
 
 public class GameManagerScriptTutorial : MonoBehaviour {
 
+    //All variables dealing with the score
     public int Score;
 
     public Text scoreText;
 
+    //All variables dealing with the balls
     public GameObject RespawnPoint;
 
     public GameObject BallPrefab;
 
     public int ballsInPlay = 1;
 
-    public GameObject endGamePanel;
+
+    //All variables dealing with the lose state
+    public int lives = 3;
+
+    public GameObject loseScreen;
+
+    //create a singleton of GameManagerScriptTutorial
+    public static GameManagerScriptTutorial instance;
+
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }else if (instance != this)
+        {
+            Destroy(this);
+        }
+    }
 
     public void AddScore(int toAdd)
     {
@@ -48,7 +68,7 @@ public class GameManagerScriptTutorial : MonoBehaviour {
 
         if (ballsInPlay <= 0)
         {
-            endGamePanel.SetActive(true);
+            loseScreen.SetActive(true);
         }
     }
 
@@ -66,5 +86,16 @@ public class GameManagerScriptTutorial : MonoBehaviour {
     public void Restart()
     {
         SceneManager.LoadScene(0);
+    }
+
+    public void LoseLife()
+    {
+        lives -= 1;
+        //Check if we have lost the game
+        if (lives <= 0)
+        {
+            //Toggle the end screen
+            loseScreen.SetActive(true);
+        }
     }
 }
