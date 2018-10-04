@@ -5,12 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
-
-    public void Restart()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-    }
-
+    
     public static GameManager instance;
 
     private void Awake()
@@ -25,6 +20,7 @@ public class GameManager : MonoBehaviour {
     }
 
     //Variables for the spawning of the ball
+    public List<GameObject> ballPrefabList = new List<GameObject>();
     public GameObject spawnLocation;
     public GameObject ballPrefab;
 
@@ -41,6 +37,12 @@ public class GameManager : MonoBehaviour {
     public Text livesText;
     public Text finalScoreText;
     public GameObject gameScreen;
+
+    public void SelectBall(int ballNumber)
+    {
+        ballPrefab = ballPrefabList[ballNumber];
+        SpawnBall();
+    }
 
     public void RemoveBall(GameObject ball)
     {
@@ -95,7 +97,10 @@ public class GameManager : MonoBehaviour {
         currentBallsAlive += 1;
     }
 
-    
+    public void Restart()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
 
     public void Quit()
     {

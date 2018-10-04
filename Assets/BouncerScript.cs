@@ -24,7 +24,7 @@ public class BouncerScript : MonoBehaviour {
         {
             Instantiate(sparksPrefab, transform).transform.position = transform.position;
         }
-        collision.rigidbody.AddExplosionForce(force, transform.position, 2);
+        collision.rigidbody.AddExplosionForce(force, collision.contacts[0].point, 2);
         GameManager.instance.AddScore(bouncerWorth);
     }
 }
